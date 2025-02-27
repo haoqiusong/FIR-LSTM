@@ -437,12 +437,14 @@ overall_feature_relevance = average_relevance.sum()  # Shape: (input_dim,)
 normalized_relevance = average_relevance / overall_feature_relevance
 
 plt.figure(figsize=(12, 10))
-sns.heatmap(
+ax = sns.heatmap(
     normalized_relevance.numpy().T,
     cmap='Blues',
     annot=False,
     yticklabels=feature_names
 )
+ax.set_xticks(np.arange(6) + 0.5)  # Adjusting to align with heatmap cells
+ax.set_xticklabels(range(1, 7))  # Labels from 1 to 6
 plt.title('Feature Importance using LRP')
 plt.xlabel('Time Epoch')
 plt.ylabel('Feature')
