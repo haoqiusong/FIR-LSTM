@@ -9,5 +9,3 @@ Architecture of FIR-LSTM. (a). Schematic of the unidirectional LSTM cell and its
 
 
 In our experiments, the input is the time-series data, each datapoint contains 6 time epochs, and each time epoch contains 66 features. The final outputs include the binary classification outcome and the calibrated risk score.
-
-If you use FIR-LSTM, please cite our work: XXX.
