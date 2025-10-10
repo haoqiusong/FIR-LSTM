@@ -344,7 +344,7 @@ output_dim = 1
 num_layers = 2
 dropout = 0.5
 num_epochs = 500
-vis_prefix = '128hidden_2layers_4decay'
+save_prefix = 'multi_layer'
 
 model = LSTMModel(input_dim, hidden_dim, output_dim, num_layers, dropout).to(device)
 class_weights = torch.tensor([1.0, np.sum(y_train == 0) / np.sum(y_train == 1)], dtype=torch.float32).to(device)
@@ -463,7 +463,7 @@ plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.title('Receiver Operating Characteristic (ROC) Curve')
 plt.legend(loc='lower right')
-plt.savefig(f'{vis_prefix}_Auroc.png')
+plt.savefig(f'{save_prefix}_Auroc.png')
 
 # Calculate the Precision-Recall curve points and AUC
 precision, recall, thresholds = precision_recall_curve(y_test_np, test_preds_calibrated)
@@ -476,7 +476,7 @@ plt.xlabel('Recall')
 plt.ylabel('Precision')
 plt.title('Precision-Recall Curve')
 plt.legend(loc='lower left')
-plt.savefig(f'{vis_prefix}_Auprc.png')
+plt.savefig(f'{save_prefix}_Auprc.png')
 
 # Training and validation loss plot
 plt.figure(figsize=(10, 8))
@@ -486,7 +486,7 @@ plt.xlabel('Epochs')
 plt.ylabel('Loss')
 plt.title('Training and Validation Loss')
 plt.legend()
-plt.savefig(f'{vis_prefix}_Loss.png')
+plt.savefig(f'{save_prefix}_Loss.png')
 """
 # Training and validation accuracy plot
 plt.figure(figsize=(10, 8))
@@ -513,7 +513,7 @@ plt.xlabel("Predicted risk")
 plt.ylabel("Observed risk")
 plt.title("Calibration Plot")
 plt.legend()
-plt.savefig(f'{vis_prefix}_Calibration.png')
+plt.savefig(f'{save_prefix}_Calibration.png')
 
 # Feature importance
 model.eval()
@@ -566,7 +566,7 @@ plt.title('Feature Importance using LRP')
 plt.xlabel('Time Epoch')
 plt.ylabel('Feature')
 plt.tight_layout()
-plt.savefig(f'{vis_prefix}_Feature_importance.png')
+plt.savefig(f'{save_prefix}_Feature_importance.png')
 
 # Normalize relevance scores by total relevance
 total_relevance = overall_feature_relevance.sum()
@@ -586,9 +586,9 @@ plt.xlabel('Normalized Relevance Score')
 plt.title('Overall Feature Importance (LRP) - Sorted')
 plt.gca().invert_yaxis()
 plt.tight_layout()
-plt.savefig(f'{vis_prefix}_Overall_feature_importance.png')
+plt.savefig(f'{save_prefix}_Overall_feature_importance.png')
 
 # Save the model and optimizer state dictionaries
-torch.save(model.state_dict(), f'{vis_prefix}_Model.pth')
-torch.save(optimizer.state_dict(), f'{vis_prefix}_Optimizer.pth')
+torch.save(model.state_dict(), f'{save_prefix}_Model.pth')
+torch.save(optimizer.state_dict(), f'{save_prefix}_Optimizer.pth')
 print("Model and optimizer have been saved.")
