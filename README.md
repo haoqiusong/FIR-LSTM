@@ -1,4 +1,4 @@
-# FIR-LSTM > A reproducible and interpretable deep learning framework for clinical time-series modeling.
+# FIR-LSTM
 
 FIR-LSTM is an interpretable deep learning framework for clinical time-series prediction.
 It uses a uni-directional LSTM model explained by Layer-wise Relevance Propagation (LRP) to identify how each feature and time epoch contributes to the final risk prediction.
@@ -15,11 +15,8 @@ It uses a uni-directional LSTM model explained by Layer-wise Relevance Propagati
 
 <div align="center">
 	<img width="535" alt="Screenshot 2025-06-02 at 11 25 06 AM" loc="center" src="https://github.com/user-attachments/assets/ea57ef88-c95d-440b-886e-55c680f2b8de" />
-	<p><b>Figure 1.</b> Architecture of FIR-LSTM. The LSTM cell and LRP-based relevance backpropagation.</p>
+	<p><b>Figure 1.</b> Architecture of FIR-LSTM. (a). Schematic of the LSTM cell and LRP-based relevance backpropagation. (b). Two-layer LSTM model generating the risk score.</p>
 </div>
-
-Figure. Architecture of FIR-LSTM. (a). Schematic of the LSTM cell and LRP-based relevance backpropagation.
-(b). Two-layer LSTM model generating the risk score.
 
 ## Repository Structure
 
@@ -36,7 +33,25 @@ FIR-LSTM/
 
 ## Installation
 
-All Python scripts are implemented under Python 3.11.5. You can easily fine-tune the model with different configurations.
+### Clone the repository
+
+```
+git clone https://github.com/haoqiusong/FIR-LSTM.git
+cd FIR-LSTM
+```
+
+### Create a Python environment (optional)
+
+```
+conda create -n firlstm python=3.11
+conda activate firlstm
+```
+
+#### Notes
+
+1. Tested on Python 3.11.5 and PyTorch 2.5.1 (CUDA 11.8).
+2. GPU acceleration is automatically used if CUDA is available.
+3. You can modify hyperparameters and file paths directly in the Python scripts.
 
 ## Citation
 
