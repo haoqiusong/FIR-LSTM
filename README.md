@@ -25,17 +25,17 @@ FIR-LSTM/
 
 │
 
-├── benchmark.py                   # Training and evaluation script
+├ benchmark.py                   # Training and evaluation script
 
-├── feature_importance_validation.py   # LRP feature relevance analysis
+├ feature_importance_validation.py   # LRP feature relevance analysis
 
-├── model.py                        # LSTM model definition
+├ model.py                        # LSTM model definition
 
-├── multi_layers.py                 # Multi-layer LSTM variant
+├ multi_layers.py                 # Multi-layer LSTM variant
 
-├── LICENSE
+├ LICENSE
 
-└── README.md
+└ README.md
 
 ## Citation
 
@@ -46,4 +46,5 @@ Zhang, L., Song, H., Patel, A., Pollack, M., & Watson, L. (2025). FIR-LSTM: An E
 Haoqiu Song
 
 Ph.D. Candidate, Virginia Tech
+
 📧 haoqiu@vt.edu
