@@ -24,13 +24,17 @@ Figure. Architecture of FIR-LSTM. (a). Schematic of the LSTM cell and LRP-based 
 ```
 FIR-LSTM/
 │
-├── benchmark.py                  # Training and evaluation script
-├── feature_importance_validation.py   # LRP feature relevance analysis
-├── model.py                      # LSTM model definition
-├── multi_layers.py               # Multi-layer LSTM variant
+├── benchmark.py                  		# Model benchmarking script
+├── feature_importance_validation.py	# LRP feature importance validation analysis
+├── model.py							# FIR-LSTM model definition and training
+├── multi_layers.py						# Multi-layer FIR-LSTM variant
 ├── LICENSE
 └── README.md
 ```
+
+## Installation
+
+All Python scripts are implemented under Python 3.11.5. You can easily fine-tune the model with different configurations.
 
 ## Citation
 
