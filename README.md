@@ -2,7 +2,7 @@
 FIR-LSTM is an interpretable deep learning framework for clinical time-series prediction.
 It uses a uni-directional LSTM model explained by Layer-wise Relevance Propagation (LRP) to identify how each feature and time epoch contributes to the final risk prediction.
 
-# Model Overview
+## Model Overview
 
 Architecture: multi-layer unidirectional LSTM
 
@@ -19,13 +19,31 @@ Outputs: Binary classification + calibrated risk score
 Figure. Architecture of FIR-LSTM. (a). Schematic of the LSTM cell and LRP-based relevance backpropagation.
 (b). Two-layer LSTM model generating the risk score.
 
-# Repository Structure
+## Repository Structure
 
 FIR-LSTM/
+
 │
+
 ├── benchmark.py                   # Training and evaluation script
+
 ├── feature_importance_validation.py   # LRP feature relevance analysis
+
 ├── model.py                        # LSTM model definition
+
 ├── multi_layers.py                 # Multi-layer LSTM variant
+
 ├── LICENSE
+
 └── README.md
+
+## Citation
+
+Zhang, L., Song, H., Patel, A., Pollack, M., & Watson, L. (2025). FIR-LSTM: An Explainable Deep Learning Framework for Predicting Iatrogenic Withdrawal Syndrome in Pediatric Intensive Care Units.
+
+## Contact
+
+Haoqiu Song
+
+Ph.D. Candidate, Virginia Tech
+📧 haoqiu@vt.edu
