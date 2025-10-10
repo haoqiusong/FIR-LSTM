@@ -32,10 +32,8 @@ patient_ids = df['Patient'].values
 # Remaining data preprocessing steps are omitted for brevity.
 # -----------------------------
 
-X = df.drop(['Label', 'Max WAT score'], axis=1).values
+X = df.drop(['Label'], axis=1).values
 y = df['Label'].values
-max_wat_scores = df['Max WAT score'].values
-feature_names = df.drop(['Label', 'Max WAT score'], axis=1).columns.tolist()
 
 unique_patients = np.unique(patient_ids)
 train_patients, test_patients = train_test_split(unique_patients, test_size=0.2, random_state=42)
@@ -289,7 +287,7 @@ def calculate_metrics(y_true, y_pred_binary):
     npv = tn / (tn + fn)
     return accuracy, precision, recall, specificity, f1, npv
 
-def train_and_evaluate(model, train_loader, val_loader, test_loader, class_weights, num_epochs=50, lr=1e-4, threshold=0.5, vis_prefix='model'):
+def train_and_evaluate(model, train_loader, val_loader, test_loader, class_weights, num_epochs=50, lr=1e-4, threshold=0.5, save_prefix='model'):
     start_time = time.time()
 
     criterion = nn.BCEWithLogitsLoss(pos_weight=class_weights[1])
@@ -374,7 +372,7 @@ def train_and_evaluate(model, train_loader, val_loader, test_loader, class_weigh
     plt.ylabel('True Positive Rate')
     plt.title('Receiver Operating Characteristic')
     plt.legend(loc='lower right')
-    plt.savefig(f'{vis_prefix}_Auroc.png')
+    plt.savefig(f'{save_prefix}_Auroc.png')
     plt.close()
 
     precision, recall, _ = precision_recall_curve(test_targets, test_preds_calibrated)
@@ -385,7 +383,7 @@ def train_and_evaluate(model, train_loader, val_loader, test_loader, class_weigh
     plt.ylabel('Precision')
     plt.title('Precision-Recall Curve')
     plt.legend(loc='lower left')
-    plt.savefig(f'{vis_prefix}_Auprc.png')
+    plt.savefig(f'{save_prefix}_Auprc.png')
     plt.close()
 
     plt.figure(figsize=(10, 8))
@@ -395,7 +393,7 @@ def train_and_evaluate(model, train_loader, val_loader, test_loader, class_weigh
     plt.ylabel('Loss')
     plt.title('Training and Validation Loss')
     plt.legend()
-    plt.savefig(f'{vis_prefix}_Loss.png')
+    plt.savefig(f'{save_prefix}_Loss.png')
     plt.close()
 
     # Calibration plot
@@ -412,13 +410,13 @@ def train_and_evaluate(model, train_loader, val_loader, test_loader, class_weigh
     plt.ylabel("Observed risk")
     plt.title("Calibration Plot")
     plt.legend()
-    plt.savefig(f'{vis_prefix}_Calibration.png')
+    plt.savefig(f'{save_prefix}_Calibration.png')
     plt.close()
 
     # Save model and optimizer
-    torch.save(model.state_dict(), f'{vis_prefix}_Model.pth')
-    torch.save(optimizer.state_dict(), f'{vis_prefix}_Optimizer.pth')
-    print(f"Model and optimizer states saved as {vis_prefix}_Model.pth and {vis_prefix}_Optimizer.pth")
+    torch.save(model.state_dict(), f'{save_prefix}_Model.pth')
+    torch.save(optimizer.state_dict(), f'{save_prefix}_Optimizer.pth')
+    print(f"Model and optimizer states saved as {save_prefix}_Model.pth and {save_prefix}_Optimizer.pth")
 
     end_time = time.time()
     runtime = end_time - start_time
@@ -453,7 +451,7 @@ results = {}
 # Train and evaluate each model
 for model_name, model_obj in models_to_test.items():
     print(f"===== Training and Evaluating: {model_name} =====")
-    res = train_and_evaluate(model_obj, train_loader, val_loader, test_loader, class_weights, num_epochs=500, lr=1e-4, threshold=0.15, vis_prefix=model_name)
+    res = train_and_evaluate(model_obj, train_loader, val_loader, test_loader, class_weights, num_epochs=500, lr=1e-4, threshold=0.15, save_prefix=model_name)
     results[model_name] = res
     print()
 
