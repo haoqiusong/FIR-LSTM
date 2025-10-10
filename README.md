@@ -21,21 +21,16 @@ Figure. Architecture of FIR-LSTM. (a). Schematic of the LSTM cell and LRP-based 
 
 ## Repository Structure
 
+```
 FIR-LSTM/
-
 │
-
-├ benchmark.py                   # Training and evaluation script
-
-├ feature_importance_validation.py   # LRP feature relevance analysis
-
-├ model.py                        # LSTM model definition
-
-├ multi_layers.py                 # Multi-layer LSTM variant
-
-├ LICENSE
-
-└ README.md
+├── benchmark.py                  # Training and evaluation script
+├── feature_importance_validation.py   # LRP feature relevance analysis
+├── model.py                      # LSTM model definition
+├── multi_layers.py               # Multi-layer LSTM variant
+├── LICENSE
+└── README.md
+```
 
 ## Citation
 
