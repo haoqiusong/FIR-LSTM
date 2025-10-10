@@ -24,11 +24,8 @@ df = pd.read_csv('dataset.csv')
 
 patient_ids = df['Patient'].values
 
-
 X = df.drop(['Label', 'Max WAT score'], axis=1).values
 y = df['Label'].values
-max_wat_scores = df['Max WAT score'].values
-feature_names = df.drop(['Label', 'Max WAT score'], axis=1).columns.tolist()
 
 unique_patients = np.unique(patient_ids)
 train_patients, test_patients = train_test_split(unique_patients, test_size=0.2, random_state=42)
