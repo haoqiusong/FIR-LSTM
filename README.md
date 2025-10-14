@@ -53,8 +53,8 @@ conda activate firlstm
 1. Tested on Python 3.11.5 and PyTorch 2.5.1 (CUDA 11.8).
 2. GPU acceleration is automatically used if CUDA is available.
 3. You can modify hyperparameters and file paths directly in the Python scripts.
-4. The demo, which operates on simulated data rather than real patient records, executes in roughly one minute on a standard desktop workstation.
-5. The installation on a standard desktop computer typically takes no more than five minutes.
+4. The installation on a standard desktop computer typically takes no more than five minutes.
+5. The demo, operates on simulated data, executes in roughly one minute on a standard desktop workstation.
 
 ## Citation
 
