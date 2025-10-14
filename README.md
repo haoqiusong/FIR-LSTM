@@ -54,6 +54,7 @@ conda activate firlstm
 2. GPU acceleration is automatically used if CUDA is available.
 3. You can modify hyperparameters and file paths directly in the Python scripts.
 4. The demo, which operates on simulated data rather than real patient records, executes in roughly one minute on a standard desktop workstation.
+5. The installation on a standard desktop computer typically takes no more than five minutes.
 
 ## Citation
 
