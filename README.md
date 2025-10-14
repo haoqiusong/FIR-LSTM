@@ -11,7 +11,7 @@ It uses a uni-directional LSTM model explained by Layer-wise Relevance Propagati
 
 **Inputs**: 6 time epochs × 66 features (per patient sequence)
 
-**Outputs**: Binary classification + calibrated risk score
+**Outputs**: Binary classification performance (ROC, PRC, calibration curve, training loss, feature importance visualizations) + calibrated risk score (for individual datapoints)
 
 <div align="center">
 	<img width="535" alt="Screenshot 2025-06-02 at 11 25 06 AM" loc="center" src="https://github.com/user-attachments/assets/ea57ef88-c95d-440b-886e-55c680f2b8de" />
@@ -27,6 +27,7 @@ FIR-LSTM/
 ├── feature_importance_validation.py	# LRP feature importance validation analysis
 ├── model.py							# FIR-LSTM model definition and training
 ├── multi_layers.py						# Multi-layer FIR-LSTM variant
+├── demo								# Demo run (simulated dataset)
 ├── LICENSE
 └── README.md
 ```
@@ -52,6 +53,7 @@ conda activate firlstm
 1. Tested on Python 3.11.5 and PyTorch 2.5.1 (CUDA 11.8).
 2. GPU acceleration is automatically used if CUDA is available.
 3. You can modify hyperparameters and file paths directly in the Python scripts.
+4. The demo, which operates on simulated data rather than real patient records, executes in roughly one minute on a standard desktop workstation.
 
 ## Citation
 
