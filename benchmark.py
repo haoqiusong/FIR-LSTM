@@ -36,7 +36,10 @@ X = df.drop(['Label'], axis=1).values
 y = df['Label'].values
 
 unique_patients = np.unique(patient_ids)
-train_patients, test_patients = train_test_split(unique_patients, test_size=0.2, random_state=42)
+train_val_patients, test_patients = train_test_split(unique_patients, test_size=0.2, random_state=42)
+# Within the remaining 80%, take 25% as validation (~20% total of all patients)
+train_patients, val_patients = train_test_split(train_val_patients, test_size=0.25, random_state=42, stratify=None)
+# This yields: 60% train, 20% val, 20% test (all patient-level distinct)
 
 def create_sequences(X, y, patient_ids, max_wat_scores, selected_patients, time_steps=6):
     Xs, ys = [], []
@@ -57,9 +60,13 @@ def create_sequences(X, y, patient_ids, max_wat_scores, selected_patients, time_
     return np.array(Xs), np.array(ys)
 
 X_train_sequence, y_train_sequence = create_sequences(X, y, patient_ids, max_wat_scores, train_patients)
+X_val_sequence, y_val_sequence = create_sequences(X, y, patient_ids, max_wat_scores, val_patients)
 X_test_sequence, y_test_sequence = create_sequences(X, y, patient_ids, max_wat_scores, test_patients)
 
-X_train, X_val, y_train, y_val = train_test_split(X_train_sequence, y_train_sequence, test_size=0.3, random_state=42, stratify=y_train_sequence)
+X_train = X_train_sequence
+y_train = y_train_sequence
+X_val = X_val_sequence
+y_val = y_val_sequence
 
 num_samples_train, seq_len_train, num_features = X_train.shape
 X_train_reshaped = X_train.reshape(-1, num_features)
